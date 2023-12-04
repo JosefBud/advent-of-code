@@ -1,0 +1,19 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "My repo for Advent of Code solves",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosefBud/advent-of-code.git"
+  },
+  "author": "Josef Budniakiewicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosefBud/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/JosefBud/advent-of-code#readme",
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  }
+}
