@@ -2,7 +2,10 @@
   "name": "advent-of-code",
   "version": "1.0.0",
   "description": "My repo for Advent of Code solves",
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "test": "bun build --target node --outdir dist util.* && node --test ./dist/*.spec.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JosefBud/advent-of-code.git"
@@ -14,6 +17,7 @@
   },
   "homepage": "https://github.com/JosefBud/advent-of-code#readme",
   "devDependencies": {
+    "@types/node": "^20.10.3",
     "prettier": "^3.1.0"
   }
 }
