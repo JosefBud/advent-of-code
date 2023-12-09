@@ -1,3 +1,5 @@
+export const int = (input: string): number => parseInt(input, 10);
+
 export type FoundNumber = {
   index: number;
   number: number;
