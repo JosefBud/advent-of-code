@@ -1,47 +1,73 @@
-import { input } from './test-input';
-// import { input } from './input';
+import { int } from '../../util';
+// import { input } from './test-input';
+import { input } from './input';
 
-/*
-seeds: 79 14 55 13
+enum MapType {
+  SeedToSoil = 'seed-to-soil',
+  SoilToFertilizer = 'soil-to-fertilizer',
+  FertilizerToWater = 'fertilizer-to-water',
+  WaterToLight = 'water-to-light',
+  LightToTemperature = 'light-to-temperature',
+  TemperatureToHumidity = 'temperature-to-humidity',
+  HumidityToLocation = 'humidity-to-location',
+}
 
-seed-to-soil map:
-50 98 2
-52 50 48
+type MapArray = [number, number, number];
 
-soil-to-fertilizer map:
-0 15 37
-37 52 2
-39 0 15
+const seeds: number[] = [];
+const maps: Record<MapType, MapArray[]> = {
+  [MapType.SeedToSoil]: [],
+  [MapType.SoilToFertilizer]: [],
+  [MapType.FertilizerToWater]: [],
+  [MapType.WaterToLight]: [],
+  [MapType.LightToTemperature]: [],
+  [MapType.TemperatureToHumidity]: [],
+  [MapType.HumidityToLocation]: [],
+};
 
-fertilizer-to-water map:
-49 53 8
-0 11 42
-42 0 7
-57 7 4
+/**
+ * Parse the input into usable maps
+ */
 
-water-to-light map:
-88 18 7
-18 25 70
+let currentMap: MapType;
+input.split('\n').forEach((line, idx) => {
+  if (idx === 0) {
+    seeds.push(
+      ...line
+        .split(' ')
+        .map(int)
+        .filter((i) => !isNaN(i)),
+    );
+    return;
+  }
+  if (!line) return;
+  const mapLabelCheck = line.split(' ')[0] as MapType;
+  if (Object.values(MapType).includes(mapLabelCheck)) {
+    currentMap = mapLabelCheck;
+    return;
+  }
+  maps[currentMap].push(line.split(' ').map(int) as [number, number, number]);
+});
 
-light-to-temperature map:
-45 77 23
-81 45 19
-68 64 13
+const seedMap: number[] = [];
+seeds.forEach((seed) => {
+  let mappedFound = false;
+  let mapped = seed;
+  function mapFinder(map: MapArray, idx: number, arr: MapArray[]) {
+    if (idx === 0) mappedFound = false;
+    if (mappedFound) return;
 
-temperature-to-humidity map:
-0 69 1
-1 0 69
+    const [dest, src, len] = map;
+    if (mapped <= src + (len - 1) && mapped >= src) {
+      const diff = mapped - src;
+      mapped = dest + diff;
+      mappedFound = true;
+    }
+  }
+  Object.values(maps).forEach((map) => {
+    map.forEach(mapFinder);
+  });
+  seedMap.push(mapped);
+});
 
-humidity-to-location map:
-60 56 37
-56 93 4
-*/
-
-// [destination, source, length]
-const seedToSoil = [];
-const soilToFertilizer = [];
-const fertilizerToWater = [];
-const waterToLight = [];
-const lightToTemperature = [];
-const temperatureToHumidity = [];
-const humidityToLocation = [];
+console.log(seedMap.sort((a, b) => a - b));
