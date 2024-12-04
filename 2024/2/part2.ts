@@ -1,4 +1,5 @@
-import { input } from './input';
+import { int } from '../../util.ts';
+import { input } from './input.ts';
 // import { input } from './test-input';
 
 const diffsAreSafe = (diffs: number[]) => {
@@ -23,7 +24,7 @@ const getDiffs = (nums: number[]) => {
 
 let safeCount = 0;
 input.forEach((_nums) => {
-  const nums = _nums.split(' ').map(Number);
+  const nums = _nums.split(' ').map(int);
   const diffs = getDiffs(nums);
   if (diffsAreSafe(diffs)) {
     safeCount++;

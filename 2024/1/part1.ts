@@ -1,9 +1,10 @@
+import { int } from '../../util';
 import { input } from './input';
 
 const firstList: number[] = [];
 const secondList: number[] = [];
 input.split('\n').forEach((value) => {
-  const nums = value.split('   ').map(Number);
+  const nums = value.split('   ').map(int);
   firstList.push(nums[0]);
   secondList.push(nums[1]);
 });

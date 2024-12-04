@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { FoundNumber, findNumbersInString } from './util';
+import { type FoundNumber, findNumbersInString } from './util.ts';
 
 describe('findNumbersInString', () => {
   it('Works as expected with numbers neither at beginning nor end', () => {

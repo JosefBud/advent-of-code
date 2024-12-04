@@ -4,7 +4,7 @@
   "description": "My repo for Advent of Code solves",
   "type": "module",
   "scripts": {
-    "test": "bun build --target node --outdir dist util.* && node --test ./dist/*.spec.js"
+    "test": "node --experimental-strip-types --test *.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/JosefBud/advent-of-code#readme",
   "devDependencies": {
-    "@types/node": "^20.10.3",
-    "prettier": "^3.1.0"
+    "@types/node": "^22.10.1",
+    "prettier": "^3.1.0",
+    "tsx": "^4.19.2"
   }
 }

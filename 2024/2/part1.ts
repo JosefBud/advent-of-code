@@ -1,13 +1,14 @@
-import { input } from './input';
+import { int } from '../../util.ts';
+import { input } from './input.ts';
 // import { input } from './test-input';
 
 let safeCount = 0;
 input.forEach((_nums) => {
   console.log(_nums);
   const diffs: number[] = [];
-  const nums = _nums.split(' ').map(Number);
+  const nums = _nums.split(' ').map(int);
   for (const _idx in nums) {
-    const idx = Number(_idx);
+    const idx = int(_idx);
     if (idx === nums.length - 1) break;
 
     const num = nums[idx];
