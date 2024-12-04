@@ -78,6 +78,7 @@ async function main() {
   }
 
   spawn.exec(`open ${puzzleUrl}`);
+  spawn.exec(`code ${dirPath}/part1.ts`);
 }
 
 main();
