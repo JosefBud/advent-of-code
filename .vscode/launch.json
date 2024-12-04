@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run TypeScript",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--experimental-strip-types"],
+      "args": ["${file}"],
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
