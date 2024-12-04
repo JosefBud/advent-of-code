@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
 import spawn from 'node:child_process';
+import { __dirname } from '../util';
 import env from '../.env.json' with { type: 'json' };
 
 // Idk, this just looks cleaner than a string with inconsistent indenting. Sue me.
@@ -14,8 +13,6 @@ const SOLUTION_TEMPLATE = [
   '// const input = getInput();',
   '',
 ].join('\n');
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const sleep = async (ms: number = 1000) =>
   new Promise((r) => setTimeout(r, ms));
@@ -29,7 +26,7 @@ const sleep = async (ms: number = 1000) =>
 async function main() {
   const year = new Date().getFullYear();
   const day = new Date().getDate();
-  const dirPath = __dirname + `/../${year}/${day}`;
+  const dirPath = __dirname() + `/../${year}/${day}`;
   const puzzleUrl = `https://adventofcode.com/${year}/day/${day}`;
 
   // Create directory for today
