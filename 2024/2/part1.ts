@@ -1,4 +1,4 @@
-import { int } from '../../util.ts';
+import { int } from '../../util/index.ts';
 import { input } from './input.ts';
 // import { input } from './test-input';
 

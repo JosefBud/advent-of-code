@@ -1,4 +1,4 @@
-import { getInput } from '../../util.ts';
+import { getInput } from '../../util/index.ts';
 
 type Match = {
   0: string; // mul(764,432)

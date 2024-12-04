@@ -7,7 +7,7 @@ import env from '../.env.json' with { type: 'json' };
 
 // Idk, this just looks cleaner than a string with inconsistent indenting. Sue me.
 const SOLUTION_TEMPLATE = [
-  "import { getExampleInput, getInput } from '../../util.ts';",
+  "import { getExampleInput, getInput } from '../../util/index.ts';",
   '',
   'const input = getExampleInput();',
   '// const input = getInput();',

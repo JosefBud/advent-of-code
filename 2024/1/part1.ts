@@ -1,5 +1,5 @@
-import { int } from '../../util';
-import { input } from './input';
+import { int } from '../../util/index.ts';
+import { input } from './input.ts';
 
 const firstList: number[] = [];
 const secondList: number[] = [];
