@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
 import spawn from 'node:child_process';
-import { __dirname } from '../util';
+import { __dirname } from '../util/index.ts';
 import env from '../.env.json' with { type: 'json' };
 
 // Idk, this just looks cleaner than a string with inconsistent indenting. Sue me.
