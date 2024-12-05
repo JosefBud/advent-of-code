@@ -294,7 +294,6 @@ export class SearchableTraversable<
           this.peek('down-left') === prevChar &&
           this.peek('up-right') === nextChar)
       ) {
-        console.log('pos', this.position, prevChar, centerChar, nextChar);
         occurrences++;
       }
       const next = this.step();
