@@ -30,12 +30,31 @@ export const STEP_DIRECTIONS: StepDirection[] = [
  * in any direction: diagonally, horizontally, or vertically
  */
 export class Traversable<T extends string | number> {
-  grid: T[][];
-  rowIndex: number = 0;
-  colIndex: number = 0;
+  _grid: T[][];
+  _rowIndex: number = 0;
+  _colIndex: number = 0;
 
   constructor(input: T[][]) {
-    this.grid = input;
+    this._grid = input;
+    this._rowIndex = 0;
+    this._colIndex = 0;
+  }
+  get grid() {
+    return this._grid;
+  }
+
+  get rowIndex() {
+    return this._rowIndex;
+  }
+  set rowIndex(v) {
+    this._rowIndex = v;
+  }
+
+  get colIndex() {
+    return this._colIndex;
+  }
+  set colIndex(v) {
+    this._colIndex = v;
   }
 
   get row() {
@@ -51,6 +70,8 @@ export class Traversable<T extends string | number> {
   }
 
   get here() {
+    // console.log('row index', this.rowIndex);
+    // console.log('here', this.grid[this.rowIndex]);
     return this.grid[this.rowIndex][this.colIndex];
   }
 
