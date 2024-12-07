@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { SearchableTraversable, Traversable } from './traversable.ts';
+import { Traversable } from './Traversable.ts';
 
 describe('Traversable', () => {
   it('Should correctly go to positions, and throw if out of bounds', () => {
@@ -160,18 +160,6 @@ describe('Traversable', () => {
   });
 });
 
-describe('SearchableTraversable', () => {
-  it('Should return the correct number of occurrences for searching the example input', () => {
-    const searchable = new SearchableTraversable(EXAMPLE_INPUT);
-    assert.strictEqual(searchable.search('XMAS'), 18);
-  });
-
-  it('Should return the correct number of occurrences for "X"-searching the example input', () => {
-    const searchable = new SearchableTraversable(EXAMPLE_INPUT);
-    assert.strictEqual(searchable.searchX('MAS'), 9);
-  });
-});
-
 const TEST_GRID: number[][] = [
   // prettier-ignore
   [ 0,  1,  2,  3,  4,  5], // 0
@@ -180,17 +168,4 @@ const TEST_GRID: number[][] = [
   [30, 31, 32, 33, 34, 35], // 3
   [40, 41, 42, 43, 44, 45], // 4
   [50, 51, 52, 53, 54, 55], // 5
-];
-
-const EXAMPLE_INPUT: string[][] = [
-  'MMMSXXMASM'.split(''),
-  'MSAMXMSMSA'.split(''),
-  'AMXSXMAAMM'.split(''),
-  'MSAMASMSMX'.split(''),
-  'XMASAMXAMM'.split(''),
-  'XXAMMXXAMA'.split(''),
-  'SMSMSASXSS'.split(''),
-  'SAXAMASAAA'.split(''),
-  'MAMMMXMMMM'.split(''),
-  'MXMXAXMASX'.split(''),
 ];
