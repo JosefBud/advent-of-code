@@ -7,6 +7,7 @@ export const __dirname = () => dirname(__filename());
 export const int = (input: string): number => parseInt(input, 10);
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const loopFallback = (ms = 5000) => new Date().getTime() + ms;
+export const stringify = (input: object) => JSON.stringify(input, null, 2);
 
 export type FoundNumber = {
   index: number;
