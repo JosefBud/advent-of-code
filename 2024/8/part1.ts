@@ -8,8 +8,6 @@ const map = input
   .split('\n')
   .map((i) => i.split(''));
 
-// console.log(stringify(map));
-
 class NodeMap {
   /**
    * @example { a: [[1,1],[5,1]], J: [[8,4],[9,2],[4,4]] }
