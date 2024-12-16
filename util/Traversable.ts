@@ -136,58 +136,40 @@ export class Traversable<T extends string | number> {
     switch (direction) {
       case 'left':
         if (this.isBeginning.ofRow) return undefined;
-        this.colIndex--;
-        return this.here;
+        return this.goTo(this.rowIndex, this.colIndex - 1);
       case 'up-left':
         if (this.isBeginning.ofRow || this.isBeginning.ofCol) return undefined;
-        this.colIndex--;
-        this.rowIndex--;
-        return this.here;
+        return this.goTo(this.rowIndex - 1, this.colIndex - 1);
       case 'up':
         if (this.isBeginning.ofCol) return undefined;
-        this.rowIndex--;
-        return this.here;
+        return this.goTo(this.rowIndex - 1, this.colIndex);
       case 'up-right':
         if (this.isBeginning.ofCol || this.isEnd.ofRow) return undefined;
-        this.rowIndex--;
-        this.colIndex++;
-        return this.here;
+        return this.goTo(this.rowIndex - 1, this.colIndex + 1);
       case 'right':
         if (this.isEnd.ofRow) return undefined;
-        this.colIndex++;
-        return this.here;
+        return this.goTo(this.rowIndex, this.colIndex + 1);
       case 'down-right':
         if (this.isEnd.ofRow || this.isEnd.ofCol) return undefined;
-        this.colIndex++;
-        this.rowIndex++;
-        return this.here;
+        return this.goTo(this.rowIndex + 1, this.colIndex + 1);
       case 'down':
         if (this.isEnd.ofCol) return undefined;
-        this.rowIndex++;
-        return this.here;
+        return this.goTo(this.rowIndex + 1, this.colIndex);
       case 'down-left':
         if (this.isEnd.ofCol || this.isBeginning.ofRow) return undefined;
-        this.rowIndex++;
-        this.colIndex--;
-        return this.here;
+        return this.goTo(this.rowIndex + 1, this.colIndex - 1);
       case 'forward':
         if (this.isEnd.ofCol && this.isEnd.ofRow) return undefined;
         if (this.isEnd.ofRow) {
-          this.rowIndex++;
-          this.colIndex = 0;
-          return this.here;
+          return this.goTo(this.rowIndex + 1, 0);
         }
-        this.colIndex++;
-        return this.here;
+        return this.goTo(this.rowIndex, this.colIndex + 1);
       case 'backward':
         if (this.isBeginning.ofCol && this.isBeginning.ofRow) return undefined;
         if (this.isBeginning.ofRow) {
-          this.rowIndex--;
-          this.colIndex = this.row.length - 1;
-          return this.here;
+          return this.goTo(this.rowIndex - 1, this.row.length - 1);
         }
-        this.colIndex--;
-        return this.here;
+        return this.goTo(this.rowIndex, this.colIndex - 1);
     }
   }
 
