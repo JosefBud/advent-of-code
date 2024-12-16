@@ -35,7 +35,7 @@ export class Traversable<T extends string | number> {
   _colIndex: number = 0;
 
   constructor(input: T[][]) {
-    this._grid = input;
+    this._grid = [...input.map((r) => [...r])];
     this._rowIndex = 0;
     this._colIndex = 0;
   }
