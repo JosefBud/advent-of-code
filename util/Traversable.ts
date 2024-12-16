@@ -195,8 +195,8 @@ export class Traversable<T extends string | number> {
     if (
       row < 0 ||
       col < 0 ||
-      row > this.row.length - 1 ||
-      col > this.col.length - 1
+      col > this.row.length - 1 ||
+      row > this.col.length - 1
     ) {
       return undefined;
     }
