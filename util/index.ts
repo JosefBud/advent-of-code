@@ -51,6 +51,29 @@ export const findNumbersInString: TFindNumbersInString = (input) => {
   return returns;
 };
 
+export const deepEqual = (arrA: any[], arrB: any[]) => {
+  // Arrays
+  if (Array.isArray(arrA) && Array.isArray(arrB)) {
+    if (arrA.length !== arrB.length) return false;
+    for (const _idxA in arrA) {
+      const idxA = int(_idxA);
+      const eleA = arrA[idxA];
+      const eleB = arrB[idxA];
+      if (Array.isArray(eleA) && Array.isArray(eleB)) {
+        if (!deepEqual(eleA, eleB)) {
+          return false;
+        }
+      } else {
+        if (eleA !== eleB) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  throw new Error('deepEqual args must be arrays');
+};
+
 /**
  * Gets the file path for a function calling from any {year}/{day} directory
  */
