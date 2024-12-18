@@ -1,0 +1,8 @@
+{
+  "editor.foldingImportsByDefault": false,
+  "github.copilot.editor.enableAutoCompletions": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.editor.customLabels.patterns": {
+    "**/[0-9]*/[0-9]*/*.{ts,txt}": "${dirname(1)}/${dirname}/${filename}.${extname}"
+  }
+}
