@@ -17,7 +17,7 @@
   // }
   "For-in loop": {
     "scope": "javascript,typescript",
-    "prefix": "for,idx,loop",
+    "prefix": ["for", "loop"],
     "body": [
       "for (const _idx in $1) {",
       "  const idx = Number(_idx)",
@@ -25,5 +25,18 @@
       "}",
     ],
     "description": "Common (for me) for-in loop that requires the index to be converted to a number since it's technically meant to iterate over objects",
+  },
+  "Unit test": {
+    "scope": "javascript,typescript",
+    "prefix": ["unit", "test", "assert", "describe"],
+    "body": [
+      "import { describe, it } from 'node:test';",
+      "import a from 'node:assert/strict';",
+      "",
+      "describe('$1', () => {",
+      "  it('$2', () => {$0})",
+      "})",
+    ],
+    "description": "Native Node unit tests",
   },
 }
