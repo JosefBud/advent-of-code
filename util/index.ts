@@ -76,9 +76,9 @@ export const deepEqual = (arrA: any[], arrB: any[]) => {
   throw new Error('deepEqual args must be arrays');
 };
 
-export const intersection = (
-  arrA: Array<string | number>,
-  arrB: Array<string | number>,
+export const intersection = <T extends string | number>(
+  arrA: Array<T>,
+  arrB: Array<T>,
 ) => {
   const arrBCopy = [...arrB];
   return arrA.filter((val) => {
