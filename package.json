@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node --experimental-strip-types scripts/daily-bootstrap.ts",
     "test": "node --experimental-strip-types --test **/*.spec.ts",
-    "test:cov": "node --experimental-strip-types --test --experimental-test-coverage **/*.spec.ts",
-    "test:watch": "node --experimental-strip-types --test --watch **/*.spec.ts",
+    "test:cov": "node --experimental-strip-types --test --experimental-test-coverage ./**/*.spec.ts ./**/**/*.spec.ts",
+    "test:watch": "node --experimental-strip-types --test --watch ./**/*.spec.ts ./**/**/*.spec.ts",
     "test:cov:watch": "node --experimental-strip-types --test --watch --experimental-test-coverage **/*.spec.ts"
   },
   "repository": {
