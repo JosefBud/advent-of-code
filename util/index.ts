@@ -53,6 +53,10 @@ export const findNumbersInString: TFindNumbersInString = (input) => {
   return returns;
 };
 
+/**
+ * Recursively checks equality of arrays, nested or not.
+ * Probably not the best; "equal" values need to be at the same index in both arrays.
+ */
 export const deepEqual = (arrA: any[], arrB: any[]) => {
   // Arrays
   if (Array.isArray(arrA) && Array.isArray(arrB)) {
@@ -76,6 +80,11 @@ export const deepEqual = (arrA: any[], arrB: any[]) => {
   throw new Error('deepEqual args must be arrays');
 };
 
+/**
+ * Finds the intersecting values between two arrays and returns those values.
+ * @example intersection([1,2,3], [3,4,5]) === [3]
+ * @example intersection(['a','b','c','d'], ['b','c','i','s']) === ['b', 'c']
+ */
 export const intersection = <T extends string | number>(
   arrA: Array<T>,
   arrB: Array<T>,
