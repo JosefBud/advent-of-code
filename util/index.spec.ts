@@ -1,6 +1,11 @@
 import { describe, it } from 'node:test';
 import a from 'node:assert/strict';
-import { type FoundNumber, deepEqual, findNumbersInString } from './index.ts';
+import {
+  type FoundNumber,
+  deepEqual,
+  findNumbersInString,
+  intersection,
+} from './index.ts';
 
 describe('utils', () => {
   describe('findNumbersInString', () => {
@@ -134,6 +139,46 @@ describe('utils', () => {
           false,
         );
       }
+    });
+  });
+
+  describe('intersection', () => {
+    it('Returns the intersection of two arrays of numbers', () => {
+      const NUM_ARRAY_1 = [10, 20, 30, 40];
+      const NUM_ARRAY_2 = [10, 30, 50, 70];
+      const NUM_ARRAY_3 = [20, 40, 60, 80];
+      let result = intersection(NUM_ARRAY_1, NUM_ARRAY_2);
+      a.deepEqual(result, [10, 30]);
+      result = intersection(NUM_ARRAY_1, NUM_ARRAY_3);
+      a.deepEqual(result, [20, 40]);
+      result = intersection(NUM_ARRAY_2, NUM_ARRAY_3);
+      a.deepEqual(result, []);
+    });
+
+    it('Returns the intersection of two arrays of strings', () => {
+      const STR_ARRAY_1 = ['a', 'b', 'c', 'd'];
+      const STR_ARRAY_2 = ['c', 'a', 'e', 'f'];
+      const STR_ARRAY_3 = ['d', 'd', 'd', 'd'];
+      let result = intersection(STR_ARRAY_1, STR_ARRAY_2);
+      a.deepEqual(result, ['a', 'c']);
+      result = intersection(STR_ARRAY_1, STR_ARRAY_3);
+      a.deepEqual(result, ['d']);
+      result = intersection(STR_ARRAY_3, STR_ARRAY_1);
+      a.deepEqual(result, ['d']);
+      result = intersection(STR_ARRAY_2, STR_ARRAY_3);
+      a.deepEqual(result, []);
+    });
+
+    it('Returns the intersection of two mixed arrays', () => {
+      const MIX_ARRAY_1 = [9, 8, 'gg', 'pp', 99];
+      const MIX_ARRAY_2 = ['pp', 'abc', 'dd', 99, 55, 44];
+      const MIX_ARRAY_3 = [22, 33, 9, 'gg', 60];
+      let result = intersection(MIX_ARRAY_1, MIX_ARRAY_2);
+      a.deepEqual(result, ['pp', 99]);
+      result = intersection(MIX_ARRAY_1, MIX_ARRAY_3);
+      a.deepEqual(result, [9, 'gg']);
+      result = intersection(MIX_ARRAY_2, MIX_ARRAY_3);
+      a.deepEqual(result, []);
     });
   });
 });

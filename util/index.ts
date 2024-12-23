@@ -2,6 +2,8 @@ import fsSync from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+export * from './data-structures/index.ts';
+
 export const __filename = () => fileURLToPath(import.meta.url);
 export const __dirname = () => dirname(__filename());
 export const int = (input: string): number => parseInt(input, 10);
@@ -72,6 +74,19 @@ export const deepEqual = (arrA: any[], arrB: any[]) => {
     return true;
   }
   throw new Error('deepEqual args must be arrays');
+};
+
+export const intersection = (
+  arrA: Array<string | number>,
+  arrB: Array<string | number>,
+) => {
+  const arrBCopy = [...arrB];
+  return arrA.filter((val) => {
+    if (arrBCopy.includes(val)) {
+      arrBCopy.splice(arrBCopy.indexOf(val), 1);
+      return true;
+    }
+  });
 };
 
 /**
