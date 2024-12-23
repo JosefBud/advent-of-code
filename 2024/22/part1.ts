@@ -1,19 +1,21 @@
-import { deepEqual, getExampleInput, getInput } from '../../util/index.ts';
+import { getExampleInput, getInput, int } from '../../util/index.ts';
 
-const input = getExampleInput();
-// const input = getInput();
+// const input = getExampleInput();
+const input = getInput();
+const secrets = input.trim().split('\n').map(int);
+
 const MOD = 16777216;
 
 const mul = (input: number) => {
-  return ((input * 64) ^ input) % MOD;
+  return (((input * 64) ^ input) >>> 0) % MOD;
 };
 
 const div = (input: number) => {
-  return (Math.floor(input / 32) ^ input) % MOD;
+  return ((Math.floor(input / 32) ^ input) >>> 0) % MOD;
 };
 
 const final = (input: number) => {
-  return ((input * 2048) ^ input) % MOD;
+  return (((input * 2048) ^ input) >>> 0) % MOD;
 };
 
 const findNSecrets = (secretNum: number, n: number) => {
@@ -28,12 +30,9 @@ const findNSecrets = (secretNum: number, n: number) => {
   return secrets;
 };
 
-const s = findNSecrets(1, 2001);
-console.log(s.at(-1));
-
-const EXPECTED_RESULT = [
-  15887950, 16495136, 527345, 704524, 1553684, 12683156, 11100544, 12249484,
-  7753432, 5908254,
-];
-
-// console.log(deepEqual(s, EXPECTED_RESULT));
+let total = 0;
+for (const i of secrets) {
+  total += findNSecrets(i, 2000).at(-1)!;
+}
+// const s = findNSecrets(1, 2000);
+console.log(total);
