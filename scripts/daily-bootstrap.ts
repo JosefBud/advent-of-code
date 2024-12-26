@@ -2,7 +2,7 @@
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
 import spawn from 'node:child_process';
-import { __dirname } from '../util/index.ts';
+import { __dirname, int } from '../util/index.ts';
 import env from '../.env.json' with { type: 'json' };
 
 // Idk, this just looks cleaner than a string with inconsistent indenting. Sue me.
@@ -24,8 +24,15 @@ const sleep = async (ms: number = 1000) =>
  * run repeatedly if one part of it fails.
  */
 async function main() {
-  const year = new Date().getFullYear();
-  const day = new Date().getDate();
+  // Use year and day arguments, or default to today's date
+  const yearArgIdx = process.argv.indexOf('--year');
+  const dayArgIdx = process.argv.indexOf('--day');
+  const year =
+    yearArgIdx !== -1
+      ? int(process.argv[yearArgIdx + 1])
+      : new Date().getFullYear();
+  const day =
+    dayArgIdx !== -1 ? int(process.argv[dayArgIdx + 1]) : new Date().getDate();
   const dirPath = __dirname() + `/../${year}/${day}`;
   const puzzleUrl = `https://adventofcode.com/${year}/day/${day}`;
 
@@ -78,4 +85,12 @@ async function main() {
   spawn.exec(`code ${dirPath}/part1.ts`);
 }
 
-main();
+main().then(() => {
+  if (process.argv.length <= 2) {
+    console.info('\n');
+    console.info(
+      'You can also get the puzzle input for a specific year and day by running this script with year and day arguments.',
+    );
+    console.info('For example: npm start -- --year 2024 --day 25');
+  }
+});
