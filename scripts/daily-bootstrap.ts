@@ -27,6 +27,7 @@ async function main() {
   // Use year and day arguments, or default to today's date
   const yearArgIdx = process.argv.indexOf('--year');
   const dayArgIdx = process.argv.indexOf('--day');
+  const openArgIdx = process.argv.indexOf('--open-code');
   const year =
     yearArgIdx !== -1
       ? int(process.argv[yearArgIdx + 1])
@@ -82,7 +83,9 @@ async function main() {
   }
 
   spawn.exec(`open ${puzzleUrl}`);
-  spawn.exec(`code ${dirPath}/part1.ts`);
+  if (openArgIdx !== -1) {
+    spawn.exec(`code ${dirPath}/part1.ts`);
+  }
 }
 
 main().then(() => {
