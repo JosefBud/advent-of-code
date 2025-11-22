@@ -107,10 +107,10 @@ export const getCallerFilePath = () => {
     // Find the part of the call stack that has {year}/{day} in the path. This will break after 2099. Good luck with that.
     const [stack] = callStack
       .split('\n')
-      .filter((stack) => stack.match(/\/20[2-9][0-9]\/[0-9]{1,2}\//));
-
+      .filter((stack) => stack.match(/\/20[1-9][0-9]\/[0-9]{1,2}\//));
     // Then capture the file path out of the full error stack string
-    const [, path] = stack.match(/file:\/\/[\s\S]*?([\s\S]*?):[0-9]/) ?? [];
+    const [, path] =
+      stack.match(/(?:file:\/\/|module code \()[\s\S]*?([\s\S]*?):[0-9]/) ?? [];
     if (path) {
       return dirname(path);
     }
