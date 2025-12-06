@@ -77,7 +77,7 @@ export class Heap {
 
   print() {
     const numOfRows = Math.floor(Math.log2(this.size)) + 1;
-    console.log('numOfRows', numOfRows, Math.log2(this.size) + 1);
+    // console.log('numOfRows', numOfRows, Math.log2(this.size) + 1);
     const items = [...this.items];
     let output = Array(numOfRows).fill('').join('  ');
     // console.log('numOfRows', numOfRows);
@@ -105,6 +105,6 @@ export class Heap {
       );
       output += '\n';
     }
-    console.log(output);
+    // console.log(output);
   }
 }

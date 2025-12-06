@@ -3,10 +3,10 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export * from './data-structures/index.ts';
-
 export const __filename = () => fileURLToPath(import.meta.url);
 export const __dirname = () => dirname(__filename());
 export const int = (input: string): number => parseInt(input, 10);
+/** @deprecated use node:timers/promises instead*/
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const loopFallback = (ms = 5000) => new Date().getTime() + ms;
 export const stringify = (input: object) => JSON.stringify(input, null, 2);

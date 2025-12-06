@@ -15,7 +15,7 @@ describe('Heap', () => {
     h.add(1);
     // console.log(h.items);
     // h.poll();
-    console.log(h.items);
+    // console.log(h.items);
     h.print();
     /*
 

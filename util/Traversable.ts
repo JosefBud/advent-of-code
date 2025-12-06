@@ -7,7 +7,7 @@ export type Direction =
   | 'down-right'
   | 'down'
   | 'down-left';
-export const DIRECTIONS: Direction[] = [
+export const DIRECTIONS = [
   'left',
   'up-left',
   'up',
@@ -16,7 +16,7 @@ export const DIRECTIONS: Direction[] = [
   'down-right',
   'down',
   'down-left',
-];
+] as const;
 
 export type StepDirection = Direction | 'forward' | 'backward';
 export const STEP_DIRECTIONS: StepDirection[] = [
@@ -94,8 +94,8 @@ export class Traversable<T extends string | number> {
    */
   get isEnd() {
     return {
-      ofRow: this.colIndex === this.col.length - 1,
-      ofCol: this.rowIndex === this.row.length - 1,
+      ofRow: this.colIndex === this.row.length - 1,
+      ofCol: this.rowIndex === this.grid.length - 1,
     };
   }
 
